@@ -1,22 +1,19 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {persistStore, persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import driversReducer from './driversSlice';
-import racesReducer from './racesSlice';
+import currencyReducer from './slices/currencySlice';
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['drivers', 'races'],
+  whitelist: ['currency'],
 };
 
-const persistedDriversReducer = persistReducer(persistConfig, driversReducer);
-const persistedRacesReducer = persistReducer(persistConfig, racesReducer);
+const persistedCurrencyReducer = persistReducer(persistConfig, currencyReducer);
 
 export const store = configureStore({
   reducer: {
-    drivers: persistedDriversReducer,
-    races: persistedRacesReducer,
+    currency: persistedCurrencyReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -25,3 +22,6 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

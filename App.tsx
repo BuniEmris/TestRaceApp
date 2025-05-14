@@ -11,50 +11,32 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {store, persistor} from './src/store';
-import DriversScreen from './src/screens/DriversScreen';
-import DriverRacesScreen from './src/screens/DriverRacesScreen';
+import CurrencyConverterScreen from './src/screens/CurrencyConverterScreen/CurrencyConverterScreen';
+import CurrencySelectScreen from './src/screens/CurrencySelectScreen/CurrencySelectScreen';
 
 const Stack = createNativeStackNavigator();
 
-function App(): React.JSX.Element {
+const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen
-              name="Drivers"
-              component={DriversScreen}
-              options={{
-                title: 'F1 Drivers',
-                headerStyle: {
-                  backgroundColor: '#f4511e',
-                },
-                headerTintColor: '#fff',
-                headerTitleStyle: {
-                  fontWeight: 'bold',
-                },
-              }}
+              name="CurrencyConverter"
+              component={CurrencyConverterScreen}
+              options={{headerShown: false}}
             />
             <Stack.Screen
-              name="DriverRaces"
-              component={DriverRacesScreen}
-              options={{
-                title: 'Driver Races',
-                headerStyle: {
-                  backgroundColor: '#f4511e',
-                },
-                headerTintColor: '#fff',
-                headerTitleStyle: {
-                  fontWeight: 'bold',
-                },
-              }}
+              name="CurrencySelect"
+              component={CurrencySelectScreen}
+              options={{title: 'Currency Select'}}
             />
           </Stack.Navigator>
         </NavigationContainer>
       </PersistGate>
     </Provider>
   );
-}
+};
 
 export default App;

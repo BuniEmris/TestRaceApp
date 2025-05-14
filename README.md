@@ -1,97 +1,80 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Currency Converter
 
-# Getting Started
+## How to Run the Application Locally
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+1. **Clone the repository:**
 
-## Step 1: Start Metro
+   ```sh
+   git clone <your-repo-url>
+   cd <your-repo-folder>
+   ```
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+2. **Install dependencies:**
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+   ```sh
+   yarn install
+   # or
+   npm install
+   ```
 
-```sh
-# Using npm
-npm start
+3. **Install iOS pods (for Mac/iOS):**
 
-# OR using Yarn
-yarn start
-```
+   ```sh
+   cd ios && pod install && cd ..
+   ```
 
-## Step 2: Build and run your app
+4. **Start the Metro bundler:**
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+   ```sh
+   yarn start
+   # or
+   npm start
+   ```
 
-### Android
+5. **Run the app:**
+   - For iOS:
+     ```sh
+     yarn ios
+     # or
+     npx react-native run-ios
+     ```
+   - For Android:
+     ```sh
+     yarn android
+     # or
+     npx react-native run-android
+     ```
 
-```sh
-# Using npm
-npm run android
+---
 
-# OR using Yarn
-yarn android
-```
+## App Architecture & Libraries
 
-### iOS
+### Architecture
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+- **React Native CLI** with **TypeScript** for type safety and maintainability.
+- **Redux Toolkit** for state management (exchange rates, selected currencies, amount, etc.).
+- **redux-persist** to cache the latest exchange rates for offline use.
+- **react-navigation** for screen navigation (stack navigator).
+- **axios** for API requests to [vatcomply.com](https://www.vatcomply.com/documentation#rates-latest).
+- **react-native-safe-area-context** for safe area handling on iOS/Android.
+- **Component-based structure**: Each UI element (input, selector, swap button) is in its own folder with separate style files for maintainability.
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+### Main Third-Party Libraries
 
-```sh
-bundle install
-```
+- `@reduxjs/toolkit`, `react-redux`, `redux-persist`: State management and persistence.
+- `@react-navigation/native`, `@react-navigation/native-stack`: Navigation between screens.
+- `axios`: HTTP client for fetching exchange rates.
+- `@react-native-async-storage/async-storage`: Storage for redux-persist.
+- `react-native-safe-area-context`: Handles device safe areas.
 
-Then, and every time you update your native dependencies, run:
+### Features
 
-```sh
-bundle exec pod install
-```
+- Real-time currency conversion using the latest rates from vatcomply.com.
+- Offline support with last known rates.
+- Searchable, scrollable currency selection with country flags and names.
+- Responsive, modern UI matching the provided design.
+- Error handling and user-friendly messages.
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+---
 
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Feel free to reach out if you have any questions or need further setup help!
